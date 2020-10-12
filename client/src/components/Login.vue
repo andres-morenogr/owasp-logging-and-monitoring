@@ -14,6 +14,7 @@
         <v-text-field
           v-model='password'
           label='Password'
+          :type="'password'"
         ></v-text-field>
       </v-col>
       <v-col cols='12'>
