@@ -5,8 +5,8 @@ const router = new Router();
 /*
  * References to each resource routers
  */
-const helloWorld = require('./components/hello-world/route');
+const login = require('./components/login/route');
 
-router.use('/hello-world', helloWorld);
+router.use('/login', login);
 
 module.exports = router;
