@@ -33,7 +33,7 @@ const server = (app) => {
   app.set('port', port);
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(morgan(morganMode));
+  app.use(morgan(morganMode, { stream: winston.stream }));
   app.use(cors());
   app.use('/', routes);
 

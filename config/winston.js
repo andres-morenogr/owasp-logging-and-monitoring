@@ -1,7 +1,7 @@
+const { createLogger, format, transports, config, stream } = require('winston');
 const appRoot = require('app-root-path');
-const winston = require('winston');
 
-let options = {
+const options = {
   file: {
     level: 'info',
     filename: `${appRoot}/logs/app.log`,
@@ -19,16 +19,17 @@ let options = {
   },
 };
 
-let logger = new winston.createLogger({
-  transports: [
-    new winston.transports.File(options.file),
-    new winston.transports.Console(options.console)
-  ],
-  exitOnError: false, // do not exit on handled exceptions
-});
+const logger = createLogger({
+   transports: [
+       new transports.Console(options.console),
+       new transports.File(options.file)
+     ],
+    exitOnError: false
+ });
 
-logger.stream = {
+ logger.stream = {
   write: function(message, encoding) {
+    // use the 'info' log level so the output will be picked up by both transports (file and console)
     logger.info(message);
   },
 };

@@ -1,9 +1,11 @@
 const httpStatus = require('http-status');
+const winston = require('../../../../../config/winston');
 
 const post = async (req, res) => {
   try {
     username = req.body.username;
     password = req.body.password;
+    winston.debug(`Login attempt ${username} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
 
     if (username === "admin" && password === "123456") {
       return res
