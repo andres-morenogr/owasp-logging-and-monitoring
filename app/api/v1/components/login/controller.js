@@ -13,7 +13,7 @@ const post = async (req, res) => {
         .send({ valid: true });
     }
     return res
-      .status(httpStatus.NOT_FOUND)
+      .status(httpStatus.UNAUTHORIZED)
       .send({ valid: false });
   } catch (error) {
     console.error(error);
